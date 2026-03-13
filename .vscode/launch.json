@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Run All Services",
+      "configurations": [
+        "player-svc",
+        "logs-svc",
+        "leaderboard-svc",
+        "gamescore-svc"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "player-svc",
+      "cwd": "${workspaceFolder}/player-svc",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "logs-svc",
+      "cwd": "${workspaceFolder}/logs-svc",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "leaderboard-svc",
+      "cwd": "${workspaceFolder}/leaderboard-svc",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "gamescore-svc",
+      "cwd": "${workspaceFolder}/gamescore-svc",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

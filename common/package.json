@@ -1,0 +1,27 @@
+{
+  "name": "@liad123121/whalo-common",
+  "version": "1.0.19",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && cp ./package.json ./build",
+    "publish-package": "npm run build && npm version patch && cd ./build && npm publish --access public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/ioredis": "^4.28.10",
+    "@types/kafkajs": "^1.8.2",
+    "@types/mongoose": "^5.11.96",
+    "@types/winston": "^2.4.4",
+    "express": "^5.2.1",
+    "ioredis": "^5.10.0",
+    "kafkajs": "^2.2.4",
+    "mongoose": "^9.3.0",
+    "winston": "^3.19.0"
+  }
+}
