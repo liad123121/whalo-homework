@@ -15,7 +15,7 @@ The system is composed of 4 independent microservices and a shared common packag
 │   MongoDB       │     │   Redis         │     │   Redis         │     │   Redis         │
 │                 │     │   MongoDB       │     │                 │     │   MongoDB       │
 └─────────────────┘     └─────────────────┘     └─────────────────┘     └─────────────────┘
-         │                      │                        ▲                       ▲
+         ▲                      ▲                        ▲                       ▲
          │                      │                        │                       │
          └──────────────────────┴──────── Kafka ─────────┴───────────────────────┘
 ```
@@ -179,8 +179,14 @@ Services will be available at:
 1. Start dependencies only via Docker:
 
 ```bash
-cd docker
-docker compose up zookeeper kafka redis mongo
+cd docker/kafka-local
+docker compose up
+
+cd ../mongo
+docker compose up
+
+cd ../redis
+docker compose up
 ```
 
 2. Open the project in VSCode, go to **Run and Debug**, and select **"Run All Services"**. This will start all 4 services in the correct order using the VSCode launch configuration.
