@@ -1,8 +1,13 @@
-import { Router } from "express";
-import { retrieveLeaderboard } from "../controllers/leaderboard-controller";
+import { RequestHandler, Router } from "express";
 
-const router = Router();
+type LeaderboardController = {
+  retrieveLeaderboard: RequestHandler;
+};
 
-router.get("/players/leaderboard", retrieveLeaderboard);
+export const buildLeaderboardRouter = (controller: LeaderboardController) => {
+  const router = Router();
 
-export { router as leaderboardRouter };
+  router.get("/players/leaderboard", controller.retrieveLeaderboard);
+
+  return router;
+};

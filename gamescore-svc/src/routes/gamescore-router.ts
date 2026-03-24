@@ -1,10 +1,16 @@
-import { Router } from "express";
-import { submitScore, topScores } from "../controllers/gamescore-conteroller";
+import { RequestHandler, Router } from "express";
 import { doesPlayerExist } from "@liad123121/whalo-common";
 
-const router = Router();
+type GamescoreController = {
+  submitScore: RequestHandler;
+  topScores: RequestHandler;
+};
 
-router.post("/", doesPlayerExist, submitScore);
-router.get("/top", topScores);
+export const buildGamescoreRouter = (controller: GamescoreController) => {
+  const router = Router();
 
-export { router as gameScoreRouter };
+  router.post("/", doesPlayerExist, controller.submitScore);
+  router.get("/top", controller.topScores);
+
+  return router;
+};

@@ -1,7 +1,4 @@
-export interface LeaderboardEntry {
-  playerId: string;
-  score: number;
-}
+import { LeaderboardEntry } from "../domain/leaderboard";
 
 interface SubmitLeaderboardResponseSuccess {
   status: true;

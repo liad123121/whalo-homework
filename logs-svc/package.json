@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
     "build": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "test": "TS_NODE_TRANSPILE_ONLY=1 node --test -r ts-node/register tests/**/*.test.ts"
   },
   "keywords": [],
   "author": "",

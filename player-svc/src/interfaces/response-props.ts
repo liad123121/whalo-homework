@@ -1,8 +1,8 @@
-import { PlayerDoc } from "../models/player";
+import { PlayerEntity } from "../domain/player";
 
 interface ResponseSuccess {
   status: true;
-  player: PlayerDoc;
+  player: PlayerEntity;
 }
 
 interface ResponseError {

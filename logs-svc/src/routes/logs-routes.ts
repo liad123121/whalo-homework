@@ -1,9 +1,14 @@
-import { Router } from "express";
-import { sendLogs } from "../controllers/logs-controller";
+import { RequestHandler, Router } from "express";
 import { doesPlayerExist } from "@liad123121/whalo-common";
 
-const router = Router();
+type LogsController = {
+  sendLogs: RequestHandler;
+};
 
-router.post("/", doesPlayerExist, sendLogs);
+export const buildLogsRouter = (controller: LogsController) => {
+  const router = Router();
 
-export { router as logsRouter };
+  router.post("/", doesPlayerExist, controller.sendLogs);
+
+  return router;
+};

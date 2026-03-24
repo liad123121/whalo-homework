@@ -1,8 +1,8 @@
-import { ScoreDoc } from "../models/score";
+import { ScoreEntity } from "../domain/score";
 
 interface SubmitScoreResponseSuccess {
   status: true;
-  score: ScoreDoc;
+  score: ScoreEntity;
 }
 
 interface ResponseError {
@@ -14,7 +14,7 @@ export type ScoreResponse = SubmitScoreResponseSuccess | ResponseError;
 
 interface TopScoresResponseSuccess {
   status: true;
-  scores: ScoreDoc[];
+  scores: ScoreEntity[];
 }
 
 export type TopScoresResponse = TopScoresResponseSuccess | ResponseError;

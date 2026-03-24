@@ -1,18 +1,23 @@
 import express from "express";
 import "express-async-errors";
 import cors from "cors";
-import { leaderboardRouter } from "./routes/leaderboard-routes";
 import notFoundHandler from "@liad123121/whalo-common/dist/middlewares/notFoundHandler";
 import { errorHandler } from "@liad123121/whalo-common";
+import { createLeaderboardController } from "./controllers/leaderboard-controller";
+import { RedisLeaderboardRepository } from "./repositories/redis-leaderboard-repository";
+import { buildLeaderboardRouter } from "./routes/leaderboard-routes";
+import { LeaderboardService } from "./services/leaderboard-service";
 
 const app = express();
 
-//plugins
+const leaderboardRepository = new RedisLeaderboardRepository();
+const leaderboardService = new LeaderboardService(leaderboardRepository);
+const leaderboardController = createLeaderboardController(leaderboardService);
+
 app.use(cors());
 app.use(express.json());
 
-//routes
-app.use("/api/leaderboard", leaderboardRouter);
+app.use("/api/leaderboard", buildLeaderboardRouter(leaderboardController));
 app.use("*", notFoundHandler);
 
 app.use(errorHandler);
